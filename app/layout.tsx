@@ -19,19 +19,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="flex min-h-screen flex-col">
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
-      </body>
-    </html>
-  )
+  try {
+    return (
+      <html lang="en">
+        <body className={inter.className}>
+          <div className="flex min-h-screen flex-col">
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </body>
+      </html>
+    );
+  } catch (error: any) {
+    console.error("Error in RootLayout:", error);
+    return <div>Error in RootLayout: {error.message}</div>;
+  }
 }
-
-
-
-import './globals.css'
